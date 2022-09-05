@@ -23,7 +23,7 @@ namespace RevertWorkshop.Patches
         public static void Postfix(bool left)
         {
             if (!left)
-                scnCLS.instance.GetComponent<WorkshopReverter>().SetText();
+                scnCLS.instance.GetOrAddComponent<WorkshopReverter>().SetText();
         }
 
         public static IEnumerable<CodeInstruction> Transpiler(ILGenerator generator, IEnumerable<CodeInstruction> instructions)

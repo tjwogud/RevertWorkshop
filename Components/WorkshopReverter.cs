@@ -1,4 +1,5 @@
-﻿using RevertWorkshop.Utils;
+﻿using DG.Tweening;
+using RevertWorkshop.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -76,6 +77,7 @@ namespace RevertWorkshop.Components
                 Transform content = rightPanel.Find("Content");
                 Transform deleteOrRevert = content.Find("Delete") ?? content.Find("Revert");
                 Text text = deleteOrRevert.GetComponentInChildren<Text>();
+                text.DOKill(false);
                 if (deleted)
                 {
                     deleteOrRevert.name = "Revert";

@@ -10,9 +10,9 @@ namespace RevertWorkshop.Patches
     {
         public static void Postfix(scnCLS __instance)
         {
-            __instance.gameObject.AddComponent<WorkshopReverter>();
+            __instance.gameObject.GetOrAddComponent<WorkshopReverter>();
             Transform helpContainer = __instance.levelInfoCanvas.transform.Find("HelpContainer");
-            if (helpContainer != null && helpContainer.gameObject.activeSelf)
+            if (helpContainer != null)
             {
                 helpContainer.localPosition = new Vector3(helpContainer.localPosition.x, helpContainer.localPosition.y + 40, helpContainer.localPosition.z);
                 Transform helpRevert = Object.Instantiate(helpContainer.Find("HelpDel"), helpContainer);
