@@ -29,7 +29,7 @@ namespace RevertWorkshop.Patches
         public static IEnumerable<CodeInstruction> Transpiler(ILGenerator generator, IEnumerable<CodeInstruction> instructions)
         {
             Label? label = null;
-            bool rtn = false;
+            bool rtn = true;
             for (int i = 0; i < instructions.Count(); i++)
             {
                 CodeInstruction code = instructions.ElementAt(i);
@@ -42,6 +42,8 @@ namespace RevertWorkshop.Patches
                 {
                     rtn = true;
                 }
+                if (label == null && code.opcode == OpCodes.Ldarg_1)
+                    rtn = false;
                 if (rtn)
                     yield return code;
             }
